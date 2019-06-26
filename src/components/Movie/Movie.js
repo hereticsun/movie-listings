@@ -11,6 +11,10 @@ export const Movie = (props) => {
     <li className={styles.movie}>
       <div className={styles.movieInfo}>
         <h3 className={styles.movieTitle}>{movie.title}</h3>
+        <dl>
+          <dt>Popularity:</dt>
+          <dd>{movie.popularity}</dd>
+        </dl>
       </div>
       <img src={imageSrc} alt={movie.title} className={styles.moviePoster} />
     </li>

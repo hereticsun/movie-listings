@@ -14,12 +14,17 @@ export class Movies extends Component {
 
   render() {
     const moviesData = this.props.movies.moviesList;
+    const orderedMovies = (Boolean(moviesData) && moviesData.length) && 
+      moviesData.sort(
+        (a, b) => b.popularity - a.popularity
+      );
+
     return (
       <section className={styles.movies}>
         <h2 className={styles.moviesTitle}>Now playing</h2>
-        {Boolean(moviesData) && moviesData.length > 0 ? (
+        {orderedMovies ? (
           <ul className={styles.moviesList}>
-            {moviesData.map(movie => (
+            {orderedMovies.map(movie => (
               <Movie movie={movie} key={movie.id} />
             ))}
           </ul>

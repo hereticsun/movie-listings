@@ -8,7 +8,13 @@ describe(`Movies`, () => {
       moviesList: [
         {
           id: 1,
+          title: 'Pet Sematary',
+          popularity: 49,
+        },
+        {
+          id: 2,
           title: 'Toy Story 4',
+          popularity: 334,
         }
       ]
     },
@@ -22,4 +28,10 @@ describe(`Movies`, () => {
     expect(element.find('Movie')).toHaveLength(props.movies.moviesList.length);
   });
 
+  it('displays the movies ordered by popularity (desc)', () => {
+    const first = element.find('Movie').first().props().movie.popularity;
+    const last = element.find('Movie').last().props().movie.popularity;
+
+    expect(first).toBeGreaterThan(last);
+  });
 });
