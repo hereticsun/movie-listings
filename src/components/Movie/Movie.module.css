@@ -11,7 +11,7 @@
 .movieInfo {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex: 0 0 40%;
   z-index: 1;
   padding: 0 16px 8px 16px;
@@ -20,6 +20,7 @@
 }
 
 .movieTitle {
+  flex: 0 0 56px;
   font-size: 24px;
   color: #fff;
 }
@@ -39,6 +40,7 @@ dl {
 dt {
   color: #fff;
   font-weight: 700;
+  text-align: left;
 }
 
 dd {

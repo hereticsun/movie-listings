@@ -47,6 +47,7 @@ export class Movies extends Component {
 
 function mapStateToProps(state) {
   return {
+    genres: state.genres.genres,
     movies: state.movies,
     tmdb_config: state.tmdb_config.config
   };

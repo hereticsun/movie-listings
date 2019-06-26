@@ -3,7 +3,10 @@ import { shallow } from 'enzyme';
 import { App } from '../App';
 
 describe(`App`, () => {
-  const element = shallow(<App />);
+  const props = {
+    fetchGenres: jest.fn(),
+  };
+  const element = shallow(<App {...props} />);
 
   it('renders properly', () => {
     expect(element).toMatchSnapshot();
