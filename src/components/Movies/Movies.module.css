@@ -1,0 +1,16 @@
+.movies {
+  max-width: 100%;
+}
+
+.moviesTitle {
+  color: #fff;
+  font-size: 24px;
+}
+
+.moviesList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+}

@@ -1,0 +1,28 @@
+.movie {
+  list-style: none;
+  position: relative;
+  width: 342px;
+  height: 513px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.movieInfo {
+  background: #3c3f42;
+  background: rgba(60, 63, 66, 0.8);
+  flex: 0 0 40%;
+  z-index: 1;
+}
+
+.movieTitle {
+  font-size: 24px;
+  color: #fff;
+}
+
+.moviePoster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}

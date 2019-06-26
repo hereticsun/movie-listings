@@ -1,0 +1,32 @@
+import { MoviesReducer } from '../movies';
+import { FETCH_MOVIES } from '../../constants/action-types';
+
+describe('MoviesReducer', () => {
+  it('should return the initial state', () => {
+    expect(MoviesReducer(undefined, {})).toEqual({});
+  });
+
+  it('should handle FETCH_MOVIES', () => {
+    expect(MoviesReducer({},{
+      type: FETCH_MOVIES,
+      payload: {
+        results: [ 
+          {
+            id: 1,
+            title: 'Toy Story 4'
+          }
+        ]
+      },
+    }))
+    .toEqual(
+      {
+        moviesList: [
+          {
+            id: 1,
+            title: 'Toy Story 4'
+          }
+        ]
+      }
+    )
+  });
+});
