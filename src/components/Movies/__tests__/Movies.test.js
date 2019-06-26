@@ -18,7 +18,8 @@ describe(`Movies`, () => {
         }
       ]
     },
-    fetchMovies: jest.fn()
+    fetchMovies: jest.fn(),
+    fetchTmdbConfig: jest.fn(),
   };
 
   const element = shallow(<Movies {...props} />);

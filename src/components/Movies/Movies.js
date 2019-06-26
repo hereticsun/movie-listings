@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { fetchMovies } from '../../actions/movies';
+import { fetchTmdbConfig } from '../../actions/tmdbConfig';
 import Movie from '../Movie';
 
 import styles from './Movies.module.css';
@@ -10,9 +11,17 @@ import styles from './Movies.module.css';
 export class Movies extends Component {
   componentDidMount() {
     this.props.fetchMovies();
+    this.props.fetchTmdbConfig();
   }
 
   render() {
+    let imagesData;
+    let imagePath;
+    if(Boolean(this.props.tmdb_config)) {
+      imagesData = this.props.tmdb_config.images;
+      imagePath = `${imagesData.secure_base_url}${imagesData.poster_sizes[3]}`;
+    }
+
     const moviesData = this.props.movies.moviesList;
     const orderedMovies = (Boolean(moviesData) && moviesData.length) && 
       moviesData.sort(
@@ -25,7 +34,7 @@ export class Movies extends Component {
         {orderedMovies ? (
           <ul className={styles.moviesList}>
             {orderedMovies.map(movie => (
-              <Movie movie={movie} key={movie.id} />
+              <Movie key={movie.id} movie={movie} imagePath={imagePath} />
             ))}
           </ul>
         ) : (
@@ -38,7 +47,8 @@ export class Movies extends Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movies
+    movies: state.movies,
+    tmdb_config: state.tmdb_config.config
   };
 }
 
@@ -46,4 +56,4 @@ Movies.propTypes = {
   movies: PropTypes.object,
 };
 
-export default connect(mapStateToProps, { fetchMovies })(Movies);
+export default connect(mapStateToProps, { fetchMovies, fetchTmdbConfig })(Movies);

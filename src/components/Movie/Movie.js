@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './Movie.module.css';
 
-const imageSrcBase = 'https://image.tmdb.org/t/p/';
-const imageSize = 'w342';
-
 export const Movie = (props) => {
-  const {movie} = props;
-  const imageSrc = `${imageSrcBase}${imageSize}${movie.poster_path}`
+  const {movie, imagePath} = props;
+  const imageSrc = `${imagePath}${movie.poster_path}`;
+
   return (
     <li className={styles.movie}>
       <div className={styles.movieInfo}>
