@@ -1,4 +1,4 @@
-import { FETCH_GENRES } from '../constants/action-types';
+import { FETCH_GENRES, SELECT_GENRES } from '../constants/action-types';
 import { genres } from '../constants/api';
 
 export const fetchGenres = () => {
@@ -17,5 +17,12 @@ export const fetchGenres = () => {
       .catch(err => {
         console.error(err);
       });
+  };
+};
+
+export const selectGenres = (selectedGenres) => {
+  return {
+    type: SELECT_GENRES,
+    payload: selectedGenres
   };
 };

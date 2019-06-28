@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenreFilter displays the list of genres for the listed movies 1`] = `ShallowWrapper {}`;

@@ -1,16 +1,37 @@
 .app {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1auto 1auto 1auto;
+  grid-template-areas: "Header Header" "Aside Main" "Footer Footer";
 }
 
 .appHeader {
-  background-color: #065796;
+  grid-area: Header;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #065796;
 }
 
 .appTitle {
   color: #fff;
   font-size: 40px;
+  text-align: center;
+}
+
+.appAside {
+  grid-area: Aside;
+  padding: 0 20px 20px 20px;
+  background: #282c34;
+}
+
+.appMain {
+  grid-area: Main;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.appFooter {
+  grid-area: Footer;
 }

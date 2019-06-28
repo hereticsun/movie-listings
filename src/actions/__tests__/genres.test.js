@@ -2,9 +2,9 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 
-import { FETCH_GENRES } from '../../constants/action-types';
+import { FETCH_GENRES, SELECT_GENRES } from '../../constants/action-types';
 import { genres } from '../../constants/api';
-import { fetchGenres } from '../genres';
+import { fetchGenres, selectGenres } from '../genres';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -15,7 +15,7 @@ describe('fetchGenres', () => {
     fetchMock.restore();
   });
 
-  it('creates an async action to fetch the movies', () => {
+  it('creates an async action to fetch the genres', () => {
     const genreData =  {
       id: 301528,
       name: 'Action',
@@ -42,5 +42,17 @@ describe('fetchGenres', () => {
     return store.dispatch(fetchGenres()).then(() => {
       expect(store.getActions()).toEqual(expectedAction)
     })
+  });
+});
+
+describe('selectGenres', () => {
+  it('creates an action to select a genre', () => {
+    const selectedGenres = [1];
+    const expectedAction = {
+      type: SELECT_GENRES,
+      payload: selectedGenres
+    };
+
+    expect(selectGenres(selectedGenres)).toEqual(expectedAction);
   });
 });

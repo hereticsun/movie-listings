@@ -10,13 +10,13 @@ describe(`Movies`, () => {
           id: 1,
           title: 'Pet Sematary',
           popularity: 49,
-          genre_ids: [],
+          genre_ids: [1],
         },
         {
           id: 2,
           title: 'Toy Story 4',
           popularity: 334,
-          genre_ids: [],
+          genre_ids: [2],
         }
       ]
     },
@@ -36,5 +36,19 @@ describe(`Movies`, () => {
     const last = element.find('Connect(Movie)').last().props().movie.popularity;
 
     expect(first).toBeGreaterThan(last);
+  });
+
+  describe('when filtered by genre', () => {
+    const propsWithSelectedGenres = {
+      ...props,
+      selectedGenres: [1]
+    };
+
+    const filteredElement = shallow(<Movies {...propsWithSelectedGenres}/>);
+    it('displays only the movies that match the selected genres', () => {
+      const matchedMovie = filteredElement.find('Connect(Movie)');
+      expect(matchedMovie).toHaveLength(1);
+      expect(matchedMovie.props().movie.genre_ids).toContain(1);
+    });
   });
 });

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchGenres } from '../../actions/genres';
 import Movies from '../Movies';
+import GenreFilter from '../GenreFilter';
 import styles from './App.module.css';
 
 export class App extends Component {
@@ -16,9 +17,13 @@ export class App extends Component {
         <header className={styles.appHeader}>
           <h1 className={styles.appTitle}>My Movie Listings</h1>
         </header>
-        <main>
+        <main className={styles.appMain}>
           <Movies />
         </main>
+        <aside className={styles.appAside}>
+          <GenreFilter />
+        </aside>
+        <footer className={styles.appFooter}></footer>
       </div>
     );
   }

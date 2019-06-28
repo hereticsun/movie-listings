@@ -1,5 +1,5 @@
 import { GenresReducer } from '../genres';
-import { FETCH_GENRES } from '../../constants/action-types';
+import { FETCH_GENRES, SELECT_GENRES } from '../../constants/action-types';
 
 describe('GenresReducer', () => {
   it('should return the initial state', () => {
@@ -28,5 +28,18 @@ describe('GenresReducer', () => {
         ]
       }
     )
+  });
+
+  it('should handle SELECT_GENRES', () => {
+    const selectedGenres = [1];
+    expect(GenresReducer([],{
+      type: SELECT_GENRES,
+      payload: selectedGenres
+    }))
+    .toEqual(
+      {
+        selectedGenres: [1]
+      },
+    );
   });
 });

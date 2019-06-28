@@ -23,17 +23,29 @@ export class Movies extends Component {
     }
 
     const moviesData = this.props.movies.moviesList;
+    const selectedGenres = this.props.selectedGenres;
     const orderedMovies = (Boolean(moviesData) && moviesData.length) && 
       moviesData.sort(
         (a, b) => b.popularity - a.popularity
       );
 
+    let moviesToDisplay = orderedMovies;
+
+    if(Boolean(selectedGenres)) {
+      const filteredMovies = orderedMovies.filter(movie => {
+        return selectedGenres.every(
+          (val) => movie.genre_ids.indexOf(val) !== -1
+        );
+      });
+      moviesToDisplay = filteredMovies;
+    }
+
     return (
       <section className={styles.movies}>
         <h2 className={styles.moviesTitle}>Now playing</h2>
-        {orderedMovies ? (
+        {moviesToDisplay ? (
           <ul className={styles.moviesList}>
-            {orderedMovies.map(movie => (
+            {moviesToDisplay.map(movie => (
               <Movie key={movie.id} movie={movie} imagePath={imagePath} />
             ))}
           </ul>
@@ -48,6 +60,7 @@ export class Movies extends Component {
 function mapStateToProps(state) {
   return {
     genres: state.genres.genres,
+    selectedGenres: state.genres.selectedGenres,
     movies: state.movies,
     tmdb_config: state.tmdb_config.config
   };
