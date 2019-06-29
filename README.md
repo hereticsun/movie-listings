@@ -1,10 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie listing coding test
+Submitted by Azlan Cuttilan
 
-## Available Scripts
+## How to use:
 
-In the project directory, you can run:
+### Prerequisites:
 
-### `npm start`
+* `node js` >= 8.12
+* `yarn` (you can install it globally by running `npm install -g yarn`)
+
+### Commands:
+
+* `yarn install` - installing dependencies
+* `yarn start` - starting the app in dev mode
+* `yarn build` - build the production artifacts
+* `yarn test` - running the tests
+
+#### `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,12 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
+#### `yarn build`
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -27,42 +33,44 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+####`yarn test`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Application structure:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Within the `src` folder, `actions`, `components` and `reducers` are grouped within their respective folders. Each component is within it's own folder that groups the tests, JS and CSS for the respective component.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+.
++-- public
++-- src
+    +-- actions
+    |   +-- __tests__
+    +-- assets
+    +-- components
+    |   +-- App
+    |   |   + -- __tests__
+    |   +-- GenreFilter
+    |   |   +-- __tests__
+    |   +-- Movie
+    |   |   +-- __tests__
+    |   +-- Movies
+    |   |   +-- __tests__
+    |   +-- RatingFilter
+    |   |   +-- __tests__
+    +-- constants
+    +-- reducers
+        +-- __tests__
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Missing functional requirements:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+All functional requirements were completed
 
-### Code Splitting
+## Possile improvements / functionality:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Debounce onChange event of range input
+The handler to set the required minimum rating fires when the value of the range input changes. clickinng a point on the range input causes this to only happen once, but dragging the slider causes it to fire multiple times in quick succession. Debouncing will reduce the number of times the handler fires and reduce impact on performance.

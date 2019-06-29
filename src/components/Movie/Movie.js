@@ -23,6 +23,8 @@ export class Movie extends Component {
         <div className={styles.movieInfo}>
           <h3 className={styles.movieTitle}>{movie.title}</h3>
           <dl>
+            <dt>Rating:</dt>
+            <dd>{movie.vote_average}</dd>
             <dt>Genres:</dt>
             <dd data-id="genres">{genreList}</dd>
           </dl>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchGenres } from '../../actions/genres';
 import Movies from '../Movies';
 import GenreFilter from '../GenreFilter';
+import RatingFilter from '../RatingFilter';
 import styles from './App.module.css';
 
 export class App extends Component {
@@ -22,6 +23,7 @@ export class App extends Component {
         </main>
         <aside className={styles.appAside}>
           <GenreFilter />
+          <RatingFilter />
         </aside>
         <footer className={styles.appFooter}></footer>
       </div>

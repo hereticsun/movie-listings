@@ -1,4 +1,4 @@
-import { FETCH_MOVIES } from '../constants/action-types';
+import { FETCH_MOVIES, SELECT_MIN_RATING } from '../constants/action-types';
 import { nowPlaying } from '../constants/api';
 
 export const fetchMovies = () => {
@@ -17,5 +17,12 @@ export const fetchMovies = () => {
       .catch(err => {
         console.error(err);
       });
+  };
+};
+
+export const selectMinRating = (minRating) => {
+  return {
+    type: SELECT_MIN_RATING,
+    payload: minRating
   };
 };

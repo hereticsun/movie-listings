@@ -11,14 +11,17 @@ describe(`Movies`, () => {
           title: 'Pet Sematary',
           popularity: 49,
           genre_ids: [1],
+          vote_average: 6.4,
         },
         {
           id: 2,
           title: 'Toy Story 4',
           popularity: 334,
           genre_ids: [2],
+          vote_average: 7.7,
         }
-      ]
+      ],
+      selectedMinRating: 3,
     },
     fetchMovies: jest.fn(),
     fetchTmdbConfig: jest.fn(),

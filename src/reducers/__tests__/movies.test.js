@@ -1,9 +1,11 @@
 import { MoviesReducer } from '../movies';
-import { FETCH_MOVIES } from '../../constants/action-types';
+import { FETCH_MOVIES, SELECT_MIN_RATING } from '../../constants/action-types';
 
 describe('MoviesReducer', () => {
   it('should return the initial state', () => {
-    expect(MoviesReducer(undefined, {})).toEqual({});
+    expect(MoviesReducer(undefined, {})).toEqual({
+      selectedMinRating: 3
+    });
   });
 
   it('should handle FETCH_MOVIES', () => {
@@ -28,5 +30,18 @@ describe('MoviesReducer', () => {
         ]
       }
     )
+  });
+
+  it('should handle SELECT_MIN_RATING', () => {
+    const selectedMinRating = 3;
+    expect(MoviesReducer([],{
+      type: SELECT_MIN_RATING,
+      payload: selectedMinRating
+    }))
+    .toEqual(
+      {
+        selectedMinRating: 3
+      },
+    );
   });
 });

@@ -2,9 +2,9 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 
-import { FETCH_MOVIES } from '../../constants/action-types';
+import { FETCH_MOVIES, SELECT_MIN_RATING } from '../../constants/action-types';
 import { nowPlaying } from '../../constants/api';
-import { fetchMovies } from '../movies';
+import { fetchMovies, selectMinRating } from '../movies';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -59,5 +59,17 @@ describe('fetchMovies', () => {
     return store.dispatch(fetchMovies()).then(() => {
       expect(store.getActions()).toEqual(expectedAction)
     })
+  });
+});
+
+describe('selectMinRating', () => {
+  it('creates an action to select a minimum rating', () => {
+    const selectedMinRating = 3;
+    const expectedAction = {
+      type: SELECT_MIN_RATING,
+      payload: selectedMinRating
+    };
+
+    expect(selectMinRating(selectedMinRating)).toEqual(expectedAction);
   });
 });

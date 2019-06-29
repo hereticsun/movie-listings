@@ -23,13 +23,19 @@ export class Movies extends Component {
     }
 
     const moviesData = this.props.movies.moviesList;
+    const selectedMinRating = this.props.movies.selectedMinRating;
     const selectedGenres = this.props.selectedGenres;
     const orderedMovies = (Boolean(moviesData) && moviesData.length) && 
       moviesData.sort(
         (a, b) => b.popularity - a.popularity
       );
 
-    let moviesToDisplay = orderedMovies;
+    let moviesToDisplay;
+    if(orderedMovies) {
+        moviesToDisplay = orderedMovies.filter(movie => {
+        return  movie.vote_average >= selectedMinRating;
+      });
+    }
 
     if(Boolean(selectedGenres)) {
       const filteredMovies = orderedMovies.filter(movie => {
