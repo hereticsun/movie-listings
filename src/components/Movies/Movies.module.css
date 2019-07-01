@@ -5,6 +5,7 @@
 .moviesTitle {
   color: #fff;
   font-size: 24px;
+  font-weight: 600;
 }
 
 .moviesList {
@@ -13,4 +14,10 @@
   justify-content: flex-start;
   margin: 0 auto;
   padding: 0;
+}
+
+@media only screen and (min-width: 568px) {
+  .moviesTitle {
+    text-align: left;
+  }
 }

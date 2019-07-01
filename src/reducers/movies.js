@@ -11,7 +11,7 @@ export const MoviesReducer = (state = initialState, action) => {
         moviesList: action.payload.results
       };
       case SELECT_MIN_RATING:
-          return {
+        return {
             ...state,
             selectedMinRating: action.payload
           };

@@ -53,7 +53,7 @@ export class Movies extends Component {
 
     return (
       <section className={styles.movies}>
-        <h2 className={styles.moviesTitle}>Now playing</h2>
+        <h2 className={styles.moviesTitle}>Now playing in theatres:</h2>
         {moviesToDisplay ? (
           <ul className={styles.moviesList}>
             {moviesToDisplay.map(movie => (

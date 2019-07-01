@@ -45,7 +45,7 @@ export class GenreFilter extends Component {
     };
 
     return (
-      <section>
+      <section className={styles.genreFilter}>
         <h2 className={styles.title}>
           Filter by genre
         </h2>

@@ -18,7 +18,7 @@ export class App extends Component {
     return (
       <div className={styles.app}>
         <header className={styles.appHeader}>
-          <h1 className={styles.appTitle}>My Movie Listings</h1>
+          <h1 className={styles.appTitle}>The Movie Place</h1>
         </header>
         <main className={styles.appMain}>
           <Movies />
