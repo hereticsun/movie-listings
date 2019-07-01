@@ -15,6 +15,7 @@ export class Movies extends Component {
   }
 
   render() {
+    // Construct the url path where images can be requested
     let imagesData;
     let imagePath;
     if(Boolean(this.props.tmdb_config)) {
@@ -25,18 +26,22 @@ export class Movies extends Component {
     const moviesData = this.props.movies.moviesList;
     const selectedMinRating = this.props.movies.selectedMinRating;
     const selectedGenres = this.props.selectedGenres;
+    
+    // Sort movies by popularity descending
     const orderedMovies = (Boolean(moviesData) && moviesData.length) && 
       moviesData.sort(
         (a, b) => b.popularity - a.popularity
       );
 
-    let moviesToDisplay;
+    // Filter movies by min rating
+      let moviesToDisplay;
     if(orderedMovies) {
         moviesToDisplay = orderedMovies.filter(movie => {
         return  movie.vote_average >= selectedMinRating;
       });
     }
 
+    // Filter movies by selected genres
     if(Boolean(selectedGenres)) {
       const filteredMovies = orderedMovies.filter(movie => {
         return selectedGenres.every(
@@ -73,7 +78,12 @@ function mapStateToProps(state) {
 }
 
 Movies.propTypes = {
+  genres: PropTypes.array,
+  selectedGenres: PropTypes.array,
   movies: PropTypes.object,
+  tmdb_config: PropTypes.object,
+  fetchMovies: PropTypes.func,
+  fetchTmdbConfig: PropTypes.func,
 };
 
 export default connect(mapStateToProps, { fetchMovies, fetchTmdbConfig })(Movies);

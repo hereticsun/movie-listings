@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import styles from './Movie.module.css';
 import { isArray } from 'util';
@@ -11,7 +12,9 @@ export class Movie extends Component {
     const imageSrc = `${imagePath}${movie.poster_path}`;
     let movieGenres = [];
     let genreList = '';
+    
     if(Boolean(genres) &&isArray(genres.genres)) {
+      // List genres for this movie
       movie.genre_ids.map(id => {
         return movieGenres.push(genres.genres.find(genre => genre.id === id));
       });
@@ -40,5 +43,11 @@ function mapStateToProps(state) {
     genres: state.genres,
   };
 }
+
+Movie.propTypes = {
+  movie: PropTypes.object,
+  genres: PropTypes.object,
+  imagePath: PropTypes.string,
+};
 
 export default connect(mapStateToProps, {})(Movie);

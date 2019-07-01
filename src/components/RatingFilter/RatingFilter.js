@@ -10,6 +10,7 @@ export class RatingFilter extends Component {
 
   render() {
     const handleFilter = (e) => {
+      // Dispatch action for selected min rating
       this.props.selectMinRating(e.target.value);
     }
 
@@ -57,6 +58,7 @@ function mapStateToProps(state) {
 
 RatingFilter.propTypes = {
   movies: PropTypes.object,
+  selectMinRating: PropTypes.func,
 }
 
 export default connect(mapStateToProps, {selectMinRating})(RatingFilter);

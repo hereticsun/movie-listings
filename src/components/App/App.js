@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { fetchGenres } from '../../actions/genres';
 import Movies from '../Movies';
@@ -25,7 +26,10 @@ export class App extends Component {
         <aside className={styles.appAside}>
           <GenreFilter />
           <RatingFilter />
-          <img src={tmdb} className={styles.attribution} />
+          <img
+            src={tmdb}
+            className={styles.attribution}
+            alt="powered by The Movie DB" />
         </aside>
       </div>
     );
@@ -37,5 +41,10 @@ function mapStateToProps(state) {
     genres: state.genres,
   };
 }
+
+App.propTypes = {
+  genres: PropTypes.object,
+  fetchGenres: PropTypes.func,
+};
 
 export default connect(mapStateToProps, { fetchGenres })(App);

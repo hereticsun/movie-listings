@@ -10,8 +10,10 @@ export class GenreFilter extends Component {
   render() {
     const {genres, movies} = this.props;
 
+    // Create an array of genres for the movies currently displayed
     let movieGenres = [];
     let availableGenres=[];
+
     if(movies && movies.moviesList) {
       movies.moviesList.map(movie => {
         return movieGenres = movieGenres.concat(movie.genre_ids)
@@ -36,6 +38,8 @@ export class GenreFilter extends Component {
             return selectedGenreIDs.push(Number(genre.value));
           });
         }
+
+        // Dispatch action to select genres
         this.props.selectGenres(selectedGenreIDs);
       }
     };
@@ -78,6 +82,8 @@ function mapStateToProps(state) {
 
 GenreFilter.propTypes = {
   genres: PropTypes.array,
+  movies: PropTypes.object,
+  selectGenres: PropTypes.func,
 };
 
 export default connect(mapStateToProps, {selectGenres})(GenreFilter);
