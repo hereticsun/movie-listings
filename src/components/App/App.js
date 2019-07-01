@@ -5,6 +5,7 @@ import { fetchGenres } from '../../actions/genres';
 import Movies from '../Movies';
 import GenreFilter from '../GenreFilter';
 import RatingFilter from '../RatingFilter';
+import tmdb from '../../assets/powered_by_tmdb.svg';
 import styles from './App.module.css';
 
 export class App extends Component {
@@ -24,8 +25,8 @@ export class App extends Component {
         <aside className={styles.appAside}>
           <GenreFilter />
           <RatingFilter />
+          <img src={tmdb} className={styles.attribution} />
         </aside>
-        <footer className={styles.appFooter}></footer>
       </div>
     );
   }
