@@ -1,5 +1,6 @@
 # Movie listing coding test
 Submitted by Azlan Cuttilan
+
 The brief for this test is available at [./movie-listing-brief.md](./movie-listing-brief.md)
 
 ## How to use:
